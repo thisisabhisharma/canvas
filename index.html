@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/4fdedf46e4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="tool-bar">
+    <!-- pen tool -->
+    <div id="pen" class="tool active">
+      <img  class="icon" src="./NewIcons/Black_Pencil.svg" alt="Pencil Image" onclick="handleModeChange('pen')" />
+      <i onclick="showhidePen()" class="fas fa-caret-down" style="font-size: 2rem;"></i>
+      <div id="penOptions" class="penOptionStyling">
+        <!-- Pen Slider Section Begins -->
+        <div class="PenSlider" style="height: 49px; text-align: center; top: 9px; width: 100%; position: absolute;
+            background-color: #a1887f; border-radius: 5px 5px 0px 0px; font-family: 'Roboto', sans-serif;">
+          <input id="myRange" class="slider" type="range" value="1" min="1" max="80"
+            oninput="changePenSize(this.value)" />
+          <!-- <span id="RangeValuePen" class="RangeValueClass">0</span> -->
+          <output name="value" id="valueid">1</output>
+        </div>
+        <!-- Pen Slider Section Ends -->
+
+        <!-- Color Section Begins -->
+        <div class="colorController" style="position: absolute;
+             top: 58px; height: 49%; width: 100%; 
+            background-color: #8d6e63; border-radius: 0px 0px 5px 5px;">
+          <div style="position: absolute; left: 0px; top: 0%; height: 100%; width: 33.33%; box-sizing: border-box; 
+              cursor: pointer;" onclick="changePenColor('black')">
+            <div class="blackColor"
+              style="position: absolute; border-radius: 50%; left: 6px; top: 6px; width: 32px; height: 32px; background-color: black;">
+            </div>
+          </div>
+          <div style="position: absolute; left: 44px; top: 0%; height: 100%; width: 33.33%; box-sizing: border-box; 
+              cursor: pointer;" onclick="changePenColor('blue')" >
+            <div class="blueColor"  style="position: absolute; border-radius: 50%; left: 6px; top: 6px; width: 32px; 
+                height: 32px; background-color: #2962ff;"></div>
+          </div>
+          <div style="position: absolute; left: 88px; top: 0%; height: 100%; width: 33.33%; box-sizing: border-box; 
+              cursor: pointer;" onclick="changePenColor('red')">
+            <div class="redColor" style="position: absolute; border-radius: 50%; left: 6px; top: 6px; width: 32px; 
+                height: 32px; background-color: #ff1744;"></div>
+          </div>
+        </div>
+        <!-- Color Section Ends -->
+      </div>
+    </div>
+    <!-- Eraser Tool -->
+    <div id="eraser" class="tool">
+      
+      <img  class="icon" src="./NewIcons/Eraser.svg" alt="Eraser Image" onclick="handleModeChange('eraser')" />
+      <i onclick="showhideEraser()" class="fas fa-caret-down" style="font-size: 2rem;"></i>
+      <!-- eraser options -->
+      <div id="eraserOptions" class="eraserOptionStyle">
+        <!-- eraser slider -->
+        <div class="EraserSlider" style="height:49px; text-align: center;top: 9px;width: 100%;position: absolute;
+              background-color: #a1887f; border-radius: 5px 5px 5px 5px;">
+          <input id="myRange" class="slider" type="range" value="5" min="1" max="80"
+            oninput="changeEraserSize(this.value)" />
+          <!-- <span id="RangeValueEraser" class="RangeValueClass">1</span> -->
+          <output name="value" id="valueid2">1</output>
+        </div>
+      </div>
+    </div>
+    <div class="sticky-icon">
+    <img onclick="showhidePad()" src="./NewIcons/StickyNote.svg" alt="">
+    </div>
+  </div>
+  
+          <!-- //////// sticky pad /////// -->
+
+    <div id="stickyPad" style="display:none">
+        <div id="accordion">
+            <div class="card">
+                <h5 class="mb-0">
+                  <button class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    -
+                  </button>
+                </h5>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+
+                  <textarea class="sticky" name="sticky" id="sticky" cols="30" rows="10"></textarea>
+
+              </div>
+            </div>
+          </div>
+
+        <button class="close" onclick="document.getElementById('stickyPad').style.display='none'" >X</button>
+            <div class="nav-head">
+              </div>
+          </div>
+
+         <!-- ///////// sticky pad ends ////// -->
+  
+
+
+  <canvas class="board"></canvas>
+  <script>
+    console.log(document.getElementsByTagName("input")[0].value);
+    // presets
+    const canvas = document.querySelector(".board")
+    let ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="tools.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.tool-bar {
+  z-index: 1;
+  padding-bottom: 11px;
+  padding-top: 11px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  background: #d7ccc8;
+}
+#pen,
+#eraser {
+  position: relative;
+}
+.icon {
+  width: 48px;
+}
+.penOptionStyling {
+  position: absolute;
+  display: none;
+  z-index: 30;
+  left: -4vw;
+  width: 132px;
+  height: 94.46px;
+  border-radius: 4px;
+}
+.eraserOptionStyle {
+  position: absolute;
+  z-index: 30;
+  left: -48%;
+  top: 99%;
+  width: 132px;
+  height: 100%;
+  border-radius: 4px;
+  display: none;
+  
+}
+.slider {
+  left: 0px;
+  top: 42%;
+  position: absolute;
+  -webkit-appearance: none;
+  width: 97%;
+  height: 13px;
+  border-radius: 5px;
+
+  background: #4db6ac;
+
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  /* transform: translate(0,-50%); */
+}
+/* slider css */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #81d4fa;
+  cursor: pointer;
+}
+
+.RangeValueClass {
+  height: 20px;
+  width: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  left: 43%;
+  top: 0px;
+  position: absolute;
+}
+
+.show {
+  display: block;
+}
+
+
+
+ /*////// sticky pad  /////*/
+
+.sticky-icon img{
+  width: 10%;
+}
+.nav-head{
+  position: absolute;
+  top: 5rem;
+  left: 69.7rem;
+  background-color: black;
+  width: 17%;
+  height: 3rem;
+ }
+
+ .close{
+  
+  border-radius: 10rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 10000;
+  position:absolute;
+  top: 5.2rem;
+  left: 81.5rem;
+  padding:10px;
+}
+
+ .sticky{
+  position: absolute;
+  top: 3.3rem;
+  left: 69.65rem;
+  background-color: wheat;
+  width: auto;
+  height: 10rem;
+ }
+
+ .card button{
+   z-index: 1000;
+  position: absolute;
+  top: 1rem;
+  left: 80rem;
+ }
+   
+ /* ///////// sticky pad ends ////// */
